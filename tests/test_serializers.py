@@ -23,7 +23,7 @@ import unittest
 
 from django.core import management, serializers
 from django.test import TestCase
-from django.utils import six
+import six
 
 from tests.lib import TagTestManager, testenv
 from tests.tagulous_tests_app import models as test_models

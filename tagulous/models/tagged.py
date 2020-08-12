@@ -10,7 +10,7 @@ import copy
 
 import django
 from django.db import models, transaction
-from django.utils import six
+import six
 
 from tagulous import utils
 from tagulous.models.fields import (
@@ -54,7 +54,7 @@ def _split_kwargs(model, kwargs, lookups=False, with_fields=False):
             if lookup == "exact":
                 try:
                     field = model._meta.get_field(field_name)
-                except models.fields.FieldDoesNotExist:
+                except django.core.exceptions.FieldDoesNotExist:
                     # Unknown - pass it on untouched
                     pass
                 else:
@@ -72,7 +72,7 @@ def _split_kwargs(model, kwargs, lookups=False, with_fields=False):
         # Try to look up the field
         try:
             field = model._meta.get_field(field_name)
-        except models.fields.FieldDoesNotExist:
+        except django.core.exceptions.FieldDoesNotExist:
             # Assume it's something clever and pass it through untouched
             # If it's invalid, an error will be raised later anyway
             safe_fields[field_name] = val

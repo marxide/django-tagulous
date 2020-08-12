@@ -10,7 +10,7 @@ from __future__ import absolute_import, unicode_literals
 import django
 from django import forms
 from django.test import TestCase
-from django.utils import six
+import six
 
 from tagulous import forms as tag_forms
 from tagulous import models as tag_models

@@ -15,7 +15,7 @@ import unittest
 import django
 from django.db import IntegrityError
 from django.test import TestCase
-from django.utils import six
+import six
 
 import tagulous.settings as tagulous_settings
 from tagulous import models as tag_models

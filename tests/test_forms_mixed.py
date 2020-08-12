@@ -10,7 +10,7 @@ Modules tested:
 from __future__ import absolute_import, unicode_literals
 
 from django.test import TestCase
-from django.utils import six
+import six
 
 from tests.lib import TagTestManager
 from tests.tagulous_tests_app import forms as test_forms

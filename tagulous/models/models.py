@@ -6,8 +6,7 @@ from __future__ import unicode_literals
 import django
 from django.db import IntegrityError, connection, models, router, transaction
 from django.db.models import F, Max
-from django.utils import six
-from django.utils.encoding import python_2_unicode_compatible
+import six
 
 import tagulous
 from tagulous import constants, settings, utils
@@ -67,7 +66,6 @@ except ImportError:
 # ##############################################################################
 
 
-@python_2_unicode_compatible
 class TagModelQuerySet(models.query.QuerySet):
     def initial(self):
         """
@@ -142,7 +140,6 @@ class TagModelQuerySet(models.query.QuerySet):
         return utils.render_tags(self)
 
 
-@python_2_unicode_compatible
 class TagModelManager(models.Manager):
     def get_queryset(self):
         return TagModelQuerySet(self.model, using=self._db)
@@ -228,7 +225,6 @@ class TagModelBase(models.base.ModelBase):
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 
-@python_2_unicode_compatible
 class BaseTagModel(with_metaclass(TagModelBase, models.Model)):
     """
     Empty abstract base class for tag models

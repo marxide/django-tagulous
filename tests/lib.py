@@ -9,7 +9,7 @@ import unittest
 import django
 from django.db import connection, models
 from django.test import testcases
-from django.utils import six
+import six
 
 from tagulous import models as tag_models
 

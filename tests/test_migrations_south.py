@@ -18,7 +18,7 @@ from django.conf import settings
 from django.core.management import call_command
 from django.db import DatabaseError
 from django.test import TransactionTestCase
-from django.utils import six
+import six
 
 from tagulous import models as tag_models
 from tests import tagulous_tests_migration

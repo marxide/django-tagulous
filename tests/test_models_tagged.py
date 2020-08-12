@@ -11,7 +11,7 @@ from __future__ import absolute_import, unicode_literals
 from django.core.exceptions import MultipleObjectsReturned
 from django.db import models
 from django.test import TestCase
-from django.utils import six
+import six
 
 from tagulous import models as tag_models
 from tagulous.models.tagged import _split_kwargs

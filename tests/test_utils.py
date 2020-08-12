@@ -10,7 +10,7 @@ from __future__ import absolute_import, unicode_literals
 import unittest
 
 from django.test import TestCase
-from django.utils import six
+import six
 
 from tagulous import utils as tag_utils
 

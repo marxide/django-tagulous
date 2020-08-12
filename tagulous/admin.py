@@ -88,7 +88,7 @@ class TagModelAdmin(admin.ModelAdmin):
         is_tree = issubclass(self.model, tag_models.TagTreeModel)
 
         class MergeForm(forms.Form):
-            # Keep selected items in same field, admin.ACTION_CHECKBOX_NAME
+            # Keep selected items in same field, admin.helpers.ACTION_CHECKBOX_NAME
             _selected_action = forms.CharField(widget=forms.MultipleHiddenInput)
             # Allow use to select from selected items
             merge_to = forms.ModelChoiceField(queryset)
@@ -114,7 +114,7 @@ class TagModelAdmin(admin.ModelAdmin):
                 return HttpResponseRedirect(request.get_full_path())
 
         else:
-            tag_pks = request.POST.getlist(admin.ACTION_CHECKBOX_NAME)
+            tag_pks = request.POST.getlist(admin.helpers.ACTION_CHECKBOX_NAME)
             if len(tag_pks) < 2:
                 # Django 1.4 doesn't support level=messages.SUCCESS
                 self.message_user(request, "You must select at least two tags to merge")
@@ -122,8 +122,8 @@ class TagModelAdmin(admin.ModelAdmin):
 
             merge_form = MergeForm(
                 initial={
-                    admin.ACTION_CHECKBOX_NAME: request.POST.getlist(
-                        admin.ACTION_CHECKBOX_NAME
+                    admin.helpers.ACTION_CHECKBOX_NAME: request.POST.getlist(
+                        admin.helpers.ACTION_CHECKBOX_NAME
                     ),
                     "merge_children": True,
                 }
